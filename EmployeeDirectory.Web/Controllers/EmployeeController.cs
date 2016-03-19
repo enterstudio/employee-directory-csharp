@@ -62,7 +62,9 @@ namespace EmployeeDirectory.Web.Controllers
 
         private string[] GetListOfKeysFromCookie()
         {
-            return Request.Cookies.Get(CookieName)?.Value?.Split('~');
+            var cookie = Request.Cookies.Get(CookieName);
+            if (cookie == null || cookie.Value == null) return null;
+            return cookie.Value.Split('~');
         }
 
         private static bool IsNumberAndInListOfKeys(int num, IReadOnlyList<string> keys)

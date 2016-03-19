@@ -30,7 +30,8 @@ namespace EmployeeDirectory.Web.Models.SeedData
         private static void AddSeedDataFromJson(EmployeeDbContext context)
         {
             // Data provided by Marvel. © 2016 MARVEL
-            var seedDataPath = HttpContext.Current?.Server.MapPath("~/App_Data/seed-data.json");
+            if (HttpContext.Current == null) return;
+            var seedDataPath = HttpContext.Current.Server.MapPath("~/App_Data/seed-data.json");
             if (!IsValidFilePath(seedDataPath)) return;
 
             var fileContents = File.ReadAllText(seedDataPath);
