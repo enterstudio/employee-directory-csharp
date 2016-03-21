@@ -10,8 +10,9 @@ Use Twilio to accept SMS messages and turn them into queries against an SQL data
 
 ### Prerequisites
 
-1. A Twilio account with a provisioned phone number.
-2. Visual Studio 2015 or 2013.
+1. A Twilio account with a provisioned phone number. (Get a [free account](https://www.twilio.com/login?utm_campaign=tutorials&utm_medium=readme) here.)
+2. Visual Studio 2015 or 2013. (Download the [free Community edition](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx) here.)
+   - Visual Studio *Code* will not work.
 
 ### Clone and Test
 
