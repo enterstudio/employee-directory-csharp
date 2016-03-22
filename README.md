@@ -10,7 +10,7 @@ Use Twilio to accept SMS messages and turn them into queries against an SQL data
 
 ### Prerequisites
 
-1. A Twilio account with a provisioned phone number. (Get a [free account](https://www.twilio.com/login?utm_campaign=tutorials&utm_medium=readme) here.)
+1. A Twilio account with a provisioned phone number. (Get a [free account](https://www.twilio.com/try-twilio?utm_campaign=tutorials&utm_medium=readme) here.)
 2. Visual Studio 2015 or 2013. (Download the [free Community edition](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx) here.)
    - Visual Studio *Code* will not work.
 
@@ -38,12 +38,12 @@ Use Twilio to accept SMS messages and turn them into queries against an SQL data
    ngrok http 29103 -host-header="localhost:29103"
    ```
 
-2. Test the URL `https://*your-ngrog-subdomain*.ngrok.io/` to make sure the tunnel is working correctly. (Be sure your solution in Visual Studio is running.)
+2. Test the URL `https://*your-ngrok-subdomain*.ngrok.io/` to make sure the tunnel is working correctly. (Be sure your solution in Visual Studio is running.)
    ![ngrok working](docs/ngrok.png)
 
 3. [Login](https://www.twilio.com/login?utm_campaign=tutorials&utm_medium=readme) to your Twilio account (or [create one](https://www.twilio.com/try-twilio?utm_campaign=tutorials&utm_medium=readme) if you don't yet have one) and select (or create) a [phone number](https://www.twilio.com/user/account/phone-numbers/incoming?utm_campaign=tutorials&utm_medium=readme).
 
-4. Scroll down to the **Messaging** section and set the **Request URL** to: `https://*your-ngrog-subdomain*.ngrok.io/Employee/Lookup` and Save.
+4. Scroll down to the **Messaging** section and set the **Request URL** to: `https://*your-ngrok-subdomain*.ngrok.io/Employee/Lookup` and Save.
    ![Web hook setup](docs/webhook.png)
 
 5. Send a text to your phone number. Twilio will receive your message and forward it to the web hook you configured in the previous step. Your web hook returns the XML response, which Twilio will in turn send back the result message to your phone. Employee directory with no apps or internet access required.
