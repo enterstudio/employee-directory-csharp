@@ -1,10 +1,10 @@
 # SMS/MMS Employee Directory on ASP.NET MVC
 
-[![Build status](https://ci.appveyor.com/api/projects/status/0iieup1dq9490msy?svg=true)](https://ci.appveyor.com/project/TwilioDevEd/server-notifications-csharp) *TODO: CI*
+[![Build status](https://ci.appveyor.com/api/projects/status/github/dprothero/employee-directory-csharp?svg=true)](https://ci.appveyor.com/project/dprothero/employee-directory-csharp) *TODO: Move to TwilioDevEd*
 
 Use Twilio to accept SMS messages and turn them into queries against an SQL database. This example functions as an Employee Directory where a mobile phone user can send a text message with a partial string of the person's name and it will return their picture and contact information (Email address and Phone number).
 
-[Read the full tutorial here](https://www.twilio.com/docs/tutorials/walkthrough/server-notifications/csharp/mvc)! *TODO: Tutorial coming soon*
+[Read the full tutorial here](http://www.prothero.com/employee-directory-csharp/)! *TODO: Move to Twilio.com*
 
 ## Trying it Out
 
@@ -21,7 +21,7 @@ Use Twilio to accept SMS messages and turn them into queries against an SQL data
    git clone https://github.com/TwilioDevEd/employee-directory-csharp.git
    ```
 
-2. Open the `EmployeeDirectory.sln` using Visual Studio and run it.
+2. Open the `EmployeeDirectory.sln` using Visual Studio and run it. This will restore all the required NuGet packages, build the solution, and launch the default action (/Home/Index) in your web browser.
 
 3. The first time the ASP.NET MVC application loads, Entity Framework will create a new SQLite database in the App_Data folder named `Employees.sqlite` seeded with data from the `seed-data.json` file. (Data provided by Marvel. &copy; 2016 MARVEL)
 
