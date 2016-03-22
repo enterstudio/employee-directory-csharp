@@ -1,24 +1,13 @@
 .chapter(data-title='Employee Directory')
-  .step(data-title='Introduction',data-file='EmployeeDirectory.Web/Models/Employee.cs')
+  .step(data-title='What does this thing do?',data-file='EmployeeDirectory.Web/Models/Employee.cs')
     :markdown
-      ## What is the Employee Directory?
+      ## What does this thing do?
       
-      This [ASP.NET](http://www.asp.net/mvc) sample application demonstrates
-      how to respond to SMS messages with meaningful data. In this tutorial, 
-      we'll show you the key bits of code to take the input message, perform
-      a database lookup, and return a useful result to the user.
+      This [ASP.NET](http://www.asp.net/mvc) application demonstrates how to respond to SMS messages with meaningful data. In this tutorial, we'll show you the key bits of code to take the input message, perform a database lookup, and return a useful result to the user.
       
-      This sample app is an Employee Directory that can be used from just an
-      SMS client. No internet connection or special apps need to be installed.
-      The mobile user can simply send a text to a special phone # with the
-      name (or partial name) of the employee for which they need contact
-      information and receive an instant reply with the employee's name,
-      photo, email address, and phone number.
+      Let's build an Employee Directory that can be used from any SMS client. The user can send a text to a special phone # with the name (or partial name) of the employee for which they need contact info and receive an instant reply with the employee's name, photo, email, and phone #.
       
-      If more than one employee matches the string being searched, then the
-      response will contain a list of choices for the user to select from.
-      This will demonstrate the usage of a cookie with Twilio so state can
-      be preserved between web hook calls to our service.
+      If more than one employee matches the string being searched, then the response will contain a list of choices for the user to select from. This will demonstrate the usage of a cookie so state can be preserved between webhook calls.
 
       Let's get started!
 
@@ -29,83 +18,87 @@
       * [Getting Started with ASP.NET MVC
       5](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started)
 
-  .step(data-title='Create the Model', data-file='EmployeeDirectory.Web/Models/Employee.cs')
+  .step(data-title='Create an Employee model', data-file='EmployeeDirectory.Web/Models/Employee.cs')
     :markdown
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor odio eu nunc fringilla pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin in risus eu risus commodo rutrum ullamcorper vel ex. Ut sodales libero id venenatis volutpat. Sed vel hendrerit metus, scelerisque pulvinar erat. Duis ut leo sed augue eleifend vehicula. Etiam scelerisque porta ligula. Curabitur molestie lorem a faucibus porttitor. Integer aliquam congue sem sed laoreet. Donec consectetur dignissim sapien, vitae euismod nisl bibendum sed. Curabitur nec facilisis arcu.
-
-      Vivamus interdum justo quis nibh mattis, vel dignissim nisl pellentesque. Duis pulvinar at dolor sit amet efficitur. Sed eu elementum sapien. Integer iaculis ullamcorper leo at interdum. Proin malesuada hendrerit lectus. Vestibulum tincidunt ipsum vel nulla consectetur malesuada. Fusce ut malesuada odio, ut porta lorem. Donec porttitor est at neque pellentesque, eu pulvinar arcu interdum. Nullam tristique ornare est, ut pulvinar mauris sollicitudin et. Cras posuere consequat diam, id tempus nibh euismod vel.
-
-  .step(data-title='Setup the DbContext', data-file='EmployeeDirectory.Web/Models/EmployeeDbContext.cs')
-    :markdown
-      Sed eget convallis dolor. Sed feugiat justo eget nunc dictum ultricies. Mauris venenatis dolor eget ornare volutpat. Integer aliquam eget velit sit amet lacinia. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque pulvinar elementum risus eu mattis. Suspendisse sapien arcu, sagittis nec pharetra semper, aliquam eu turpis. Nulla orci turpis, varius vel malesuada sed, sodales eget arcu. Quisque in ligula ac urna tristique dignissim. Suspendisse potenti.
-
-  .step(data-title='Employee Directory Service', data-file='EmployeeDirectory.Web/Services/EmployeeDirectoryService.cs')
-    :markdown
-      Morbi ullamcorper scelerisque leo. Donec quis risus nisi. Aliquam mattis sit amet augue quis ornare. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec posuere vitae nisl id eleifend. Nunc elementum dapibus nibh ac tempus. Cras venenatis odio ipsum, a sollicitudin velit faucibus eget. Aliquam nisi nunc, rhoncus sed tellus ac, condimentum blandit nisi. Quisque vel porta nibh. Etiam dictum sollicitudin orci ut volutpat. Nunc in urna sed erat interdum maximus vitae ac nisl. Donec mattis elit at convallis gravida. Pellentesque luctus, lorem pretium lacinia auctor, tellus neque tristique urna, eget efficitur enim nulla eu metus. Nulla placerat dui sem, nec fermentum purus faucibus ut. Aliquam est metus, aliquam in ultrices efficitur, gravida sed lacus. Aliquam risus sapien, scelerisque suscipit mi sed, eleifend pellentesque justo.
-
-  .step(data-title='Application Test Page', data-file='EmployeeDirectory.Web/Controllers/HomeController.cs')
-    :markdown
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor odio eu nunc fringilla pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin in risus eu risus commodo rutrum ullamcorper vel ex. Ut sodales libero id venenatis volutpat. Sed vel hendrerit metus, scelerisque pulvinar erat. Duis ut leo sed augue eleifend vehicula. Etiam scelerisque porta ligula. Curabitur molestie lorem a faucibus porttitor. Integer aliquam congue sem sed laoreet. Donec consectetur dignissim sapien, vitae euismod nisl bibendum sed. Curabitur nec facilisis arcu.
-
-  .step(data-title='SMS Web Hook Event Handler', data-file='EmployeeDirectory.Web/Controllers/EmployeeController.cs',
-        data-highlight='21-42')
-    :markdown
-      Sed eget convallis dolor. Sed feugiat justo eget nunc dictum ultricies. Mauris venenatis dolor eget ornare volutpat. Integer aliquam eget velit sit amet lacinia. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque pulvinar elementum risus eu mattis. Suspendisse sapien arcu, sagittis nec pharetra semper, aliquam eu turpis. Nulla orci turpis, varius vel malesuada sed, sodales eget arcu. Quisque in ligula ac urna tristique dignissim. Suspendisse potenti.
-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor odio eu nunc fringilla pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin in risus eu risus commodo rutrum ullamcorper vel ex. Ut sodales libero id venenatis volutpat. Sed vel hendrerit metus, scelerisque pulvinar erat. Duis ut leo sed augue eleifend vehicula. Etiam scelerisque porta ligula. Curabitur molestie lorem a faucibus porttitor. Integer aliquam congue sem sed laoreet. Donec consectetur dignissim sapien, vitae euismod nisl bibendum sed. Curabitur nec facilisis arcu.
-
-  .step(data-title='Looking Up An Employee', data-file='EmployeeDirectory.Web/Controllers/EmployeeController.cs',
-        data-highlight='37-40')
-    :markdown
-      Ignore GetEmployeesIfNumericInput() for now (to be explained later).
+      ## Create an Employee model
     
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor odio eu nunc fringilla pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin in risus eu risus commodo rutrum ullamcorper vel ex. Ut sodales libero id venenatis volutpat. Sed vel hendrerit metus, scelerisque pulvinar erat. Duis ut leo sed augue eleifend vehicula. Etiam scelerisque porta ligula. Curabitur molestie lorem a faucibus porttitor. Integer aliquam congue sem sed laoreet. Donec consectetur dignissim sapien, vitae euismod nisl bibendum sed. Curabitur nec facilisis arcu.
+
       Vivamus interdum justo quis nibh mattis, vel dignissim nisl pellentesque. Duis pulvinar at dolor sit amet efficitur. Sed eu elementum sapien. Integer iaculis ullamcorper leo at interdum. Proin malesuada hendrerit lectus. Vestibulum tincidunt ipsum vel nulla consectetur malesuada. Fusce ut malesuada odio, ut porta lorem. Donec porttitor est at neque pellentesque, eu pulvinar arcu interdum. Nullam tristique ornare est, ut pulvinar mauris sollicitudin et. Cras posuere consequat diam, id tempus nibh euismod vel.
 
+  .step(data-title='Receive an incoming SMS', data-file='EmployeeDirectory.Web/Controllers/EmployeeController.cs',
+        data-highlight='31-42')
+    :markdown
+      ## Receive an incoming SMS
+      
       Sed eget convallis dolor. Sed feugiat justo eget nunc dictum ultricies. Mauris venenatis dolor eget ornare volutpat. Integer aliquam eget velit sit amet lacinia. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque pulvinar elementum risus eu mattis. Suspendisse sapien arcu, sagittis nec pharetra semper, aliquam eu turpis. Nulla orci turpis, varius vel malesuada sed, sodales eget arcu. Quisque in ligula ac urna tristique dignissim. Suspendisse potenti.
 
-  .step(data-title='Formatting the Response', data-file='EmployeeDirectory.Web/Controllers/EmployeeController.cs',
-        data-highlight='87-110')
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor odio eu nunc fringilla pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin in risus eu risus commodo rutrum ullamcorper vel ex. Ut sodales libero id venenatis volutpat. Sed vel hendrerit metus, scelerisque pulvinar erat. Duis ut leo sed augue eleifend vehicula. Etiam scelerisque porta ligula. Curabitur molestie lorem a faucibus porttitor. Integer aliquam congue sem sed laoreet. Donec consectetur dignissim sapien, vitae euismod nisl bibendum sed. Curabitur nec facilisis arcu.
+
+  .step(data-title='Search for an Employee by name',
+        data-file='EmployeeDirectory.Web/Services/EmployeeDirectoryService.cs',
+        data-highlight='9, 18-24')
     :markdown
+      ## Search for an Employee by name
+      
       Morbi ullamcorper scelerisque leo. Donec quis risus nisi. Aliquam mattis sit amet augue quis ornare. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec posuere vitae nisl id eleifend. Nunc elementum dapibus nibh ac tempus. Cras venenatis odio ipsum, a sollicitudin velit faucibus eget. Aliquam nisi nunc, rhoncus sed tellus ac, condimentum blandit nisi. Quisque vel porta nibh. Etiam dictum sollicitudin orci ut volutpat. Nunc in urna sed erat interdum maximus vitae ac nisl. Donec mattis elit at convallis gravida. Pellentesque luctus, lorem pretium lacinia auctor, tellus neque tristique urna, eget efficitur enim nulla eu metus. Nulla placerat dui sem, nec fermentum purus faucibus ut. Aliquam est metus, aliquam in ultrices efficitur, gravida sed lacus. Aliquam risus sapien, scelerisque suscipit mi sed, eleifend pellentesque justo.
 
-  .step(data-title='Handling Multiple Matches', data-file='EmployeeDirectory.Web/Controllers/EmployeeController.cs',
-        data-highlight='112-137')
+  .step(data-title='Respond with a single match for an Employee name',
+        data-file='EmployeeDirectory.Web/Controllers/EmployeeController.cs',
+        data-highlight='87, 92, 98-102')
     :markdown
+      ## Respond with single match for an Employee name
+    
+      Morbi ullamcorper scelerisque leo. Donec quis risus nisi. Aliquam mattis sit amet augue quis ornare. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec posuere vitae nisl id eleifend. Nunc elementum dapibus nibh ac tempus. Cras venenatis odio ipsum, a sollicitudin velit faucibus eget. Aliquam nisi nunc, rhoncus sed tellus ac, condimentum blandit nisi. Quisque vel porta nibh. Etiam dictum sollicitudin orci ut volutpat. Nunc in urna sed erat interdum maximus vitae ac nisl. Donec mattis elit at convallis gravida. Pellentesque luctus, lorem pretium lacinia auctor, tellus neque tristique urna, eget efficitur enim nulla eu metus. Nulla placerat dui sem, nec fermentum purus faucibus ut. Aliquam est metus, aliquam in ultrices efficitur, gravida sed lacus. Aliquam risus sapien, scelerisque suscipit mi sed, eleifend pellentesque justo.
+
+  .step(data-title='What if no Employee or multiple employees match?',
+        data-file='EmployeeDirectory.Web/Controllers/EmployeeController.cs',
+        data-highlight='87, 92, 94-96, 104-106')
+    :markdown
+      ## What if no Employee or multiple employees match?
+    
+      Morbi ullamcorper scelerisque leo. Donec quis risus nisi. Aliquam mattis sit amet augue quis ornare. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec posuere vitae nisl id eleifend. Nunc elementum dapibus nibh ac tempus. Cras venenatis odio ipsum, a sollicitudin velit faucibus eget. Aliquam nisi nunc, rhoncus sed tellus ac, condimentum blandit nisi. Quisque vel porta nibh. Etiam dictum sollicitudin orci ut volutpat. Nunc in urna sed erat interdum maximus vitae ac nisl. Donec mattis elit at convallis gravida. Pellentesque luctus, lorem pretium lacinia auctor, tellus neque tristique urna, eget efficitur enim nulla eu metus. Nulla placerat dui sem, nec fermentum purus faucibus ut. Aliquam est metus, aliquam in ultrices efficitur, gravida sed lacus. Aliquam risus sapien, scelerisque suscipit mi sed, eleifend pellentesque justo.
+
+  .step(data-title='Return a list of possible matches',
+        data-file='EmployeeDirectory.Web/Controllers/EmployeeController.cs',
+        data-highlight='112-128')
+    :markdown
+      ## Return a list of possible matches
+      
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor odio eu nunc fringilla pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin in risus eu risus commodo rutrum ullamcorper vel ex. Ut sodales libero id venenatis volutpat. Sed vel hendrerit metus, scelerisque pulvinar erat. Duis ut leo sed augue eleifend vehicula. Etiam scelerisque porta ligula. Curabitur molestie lorem a faucibus porttitor. Integer aliquam congue sem sed laoreet. Donec consectetur dignissim sapien, vitae euismod nisl bibendum sed. Curabitur nec facilisis arcu.
       
-  .step(data-title='Multiple Match Selection Reply', data-file='EmployeeDirectory.Web/Controllers/EmployeeController.cs',
-        data-highlight='37, 44-85')
+  .step(data-title='Remember the list of possible matches',
+        data-file='EmployeeDirectory.Web/Controllers/EmployeeController.cs',
+        data-highlight='126, 130-137')
     :markdown
+      ## Remember the list of possible matches
+      
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor odio eu nunc fringilla pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin in risus eu risus commodo rutrum ullamcorper vel ex. Ut sodales libero id venenatis volutpat. Sed vel hendrerit metus, scelerisque pulvinar erat. Duis ut leo sed augue eleifend vehicula. Etiam scelerisque porta ligula. Curabitur molestie lorem a faucibus porttitor. Integer aliquam congue sem sed laoreet. Donec consectetur dignissim sapien, vitae euismod nisl bibendum sed. Curabitur nec facilisis arcu.
+      
+  .step(data-title='Return Employee contact information by number choice',
+        data-file='EmployeeDirectory.Web/Controllers/EmployeeController.cs',
+        data-highlight='44-55')
+    :markdown
+      ## Return Employee contact information by number choice
+    
       Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin in risus eu risus commodo rutrum ullamcorper vel ex. Ut sodales libero id venenatis volutpat. Sed vel hendrerit metus, scelerisque pulvinar erat. Duis ut leo sed augue eleifend vehicula. Etiam scelerisque porta ligula. Curabitur molestie lorem a faucibus porttitor. Integer aliquam congue sem sed laoreet. Donec consectetur dignissim sapien, vitae euismod nisl bibendum sed. Curabitur nec facilisis arcu.
       
-  .step(data-title='Return XML', data-file='EmployeeDirectory.Web/Controllers/EmployeeController.cs',
-        data-highlight='41')
-    :markdown
-      Sed eget convallis dolor. Sed feugiat justo eget nunc dictum ultricies. Mauris venenatis dolor eget ornare volutpat. Integer aliquam eget velit sit amet lacinia. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque pulvinar elementum risus eu mattis. Suspendisse sapien arcu, sagittis nec pharetra semper, aliquam eu turpis. Nulla orci turpis, varius vel malesuada sed, sodales eget arcu. Quisque in ligula ac urna tristique dignissim. Suspendisse potenti.
-      
-  .step(data-title='Summary')
+  .step(data-title='Where to next?')
     :markdown
       ## Where to next?
 
-      That's it! We've just implemented an automated server notification system
-      that can send you server alerts if anything goes wrong. If you're a C#
-      developer working with Twilio, you might want to check out these other
-      tutorials.
+      That's it! We've just implemented an automated employee directory that works over SMS. If you're a C# developer working with Twilio, you might want to check out these other tutorials.
 
       [**Two-Factor
       Authentication**](https://www.twilio.com/docs/howto/walkthrough/two-factor-authentication/csharp/mvc)
 
-      Increase the security of your login system by verifying a user's mobile
-      phone in addition to their password.
+      Increase the security of your login system by verifying a user's mobile phone in addition to their password.
 
       [**Appointment
       Reminders**](https://www.twilio.com/docs/howto/walkthrough/appointment-reminders/csharp/mvc)
 
-      Send your customers a text message when they have an upcoming appointment,
-      this tutorial shows you how to do it from a background job.
+      Send your customers a text message when they have an upcoming appointment, this tutorial shows you how to do it from a background job.
 
       ### Did this help?
 
-      Thanks for checking out this tutorial! If you have any feedback to share
-      with us, we'd love to hear it. Tweet [@twilio](http://twitter.com/twilio)
-      to let us know what you think.
+      Thanks for checking out this tutorial! If you have any feedback to share with us, we'd love to hear it. Tweet [@twilio](http://twitter.com/twilio) to let us know what you think.
