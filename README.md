@@ -33,6 +33,7 @@ Use Twilio to accept SMS messages and turn them into queries against an SQL data
 
 5. The `Home/Index.cshtml` view associated with the `HomeController` displays the first employee found as well as providing a search box to test the employee directory search by name functionality...
    ![test page](docs/test.png)
+   
    Type in a name, or partial name, and click the Go button. The Twilio Markup XML response (TwiML) will be returned. (Hint: The database has been seeded with Marvel Universe "employees".)
 
 6. At this point you have the application working. You will notice that the XML response is coming from the `/Employee/Lookup` route. You will need this in the next section to set up your Twilio webhook.
@@ -40,21 +41,21 @@ Use Twilio to accept SMS messages and turn them into queries against an SQL data
 
 ### Receiving SMS Messages in your local development environment
 
-1. You need to connect Twilio to your new `/Employee/Lookup` service. To do this, you need to make your local IIS Express development web server accessible to Twilio. The easiest way to do this is to use [ngrok](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html?utm_campaign=tutorials&utm_medium=readme). Once you've downloaded and unzipped ngrok, create your tunnel like so:
+1. You need to connect Twilio to your new `/Employee/Lookup` service. To do this, you need to make your local IIS Express development web server accessible to Twilio. The easiest way to do this is to use [ngrok](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html?utm_campaign=tutorials&utm_medium=readme). Once you've [downloaded](https://ngrok.com/download) and unzipped ngrok, create your tunnel like so:
    ```
    ngrok http 29103 -host-header="localhost:29103"
    ```
-   Port 29103 is the port assigned to the web project by Visual Studio. The host-header parameter is required for IIS Express to allow traffic to your local development site.
+   Port 29103 is the port assigned to the web project by Visual Studio. You do not need to change it. The host-header parameter is required for IIS Express to allow traffic to your local development site.
 
 2. Test the URL `https://*your-ngrok-subdomain*.ngrok.io/` to make sure the tunnel is working correctly. (Be sure your solution in Visual Studio is running.)
    ![ngrok working](docs/ngrok.png)
 
 3. [Login](https://www.twilio.com/login?utm_campaign=tutorials&utm_medium=readme) to your Twilio account (or [create one](https://www.twilio.com/try-twilio?utm_campaign=tutorials&utm_medium=readme) if you don't yet have one) and select (or create) a [phone number](https://www.twilio.com/user/account/phone-numbers/incoming?utm_campaign=tutorials&utm_medium=readme).
 
-4. Scroll down to the **Messaging** section and set the **Request URL** to: `https://*your-ngrok-subdomain*.ngrok.io/Employee/Lookup` and Save.
+4. Scroll down to the **Messaging** section and set **Confure with** to *URL*, the **Request URL** to: `https://*your-ngrok-subdomain*.ngrok.io/Employee/Lookup`, select **HTTP POST** and then click Save.
    ![Webhook setup](docs/webhook.png)
 
-5. Send a text to your phone number. Twilio will receive your message and forward it to the webhook you configured in the previous step. Your webhook returns the XML response, which Twilio will in turn send back the result message to your phone. You now have an employee directory with no apps or internet access required.
+5. Send a text to your phone number. Twilio will receive your message and forward it to the webhook you configured in the previous step. Your webhook returns the XML response, which Twilio will in turn send back as an MMS message to your phone. You now have an employee directory with no apps or internet access required.
 
 ## Getting Ready for Production
 
@@ -67,6 +68,7 @@ Use Twilio to accept SMS messages and turn them into queries against an SQL data
        <add name="DefaultConnectionX" connectionString="Server=YourSqlServeName;Database=Employees;User ID=yourUserName;Password=yourPassword" providerName="System.Data.SqlClient" />
    </connectionStrings>
    ```
+   Or, even better, if you are using Azure Web Apps, configure your connection string in the Azure Portal.
 
 2. You will likely want to change the `App_Data/seed-data.json` file, or simply delete it. If the file does not exist, the application will simply initialize an empty database.
 
